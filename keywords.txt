@@ -1,0 +1,22 @@
+Datatypes:
+    int
+    uint
+    float
+    ufloat
+
+    bool
+    string
+    
+    void
+
+Contol:
+    if
+    else
+    while
+    for
+
+    return
+    break
+    continue
+    exit
+
