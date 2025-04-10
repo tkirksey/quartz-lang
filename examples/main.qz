@@ -1,12 +1,6 @@
 // main.qz
 
-// since overflow comes from 
-// a local file, it isn't 
-// required to use
-// 'from overflow.qz' to point
-// the compiler to where the file
-// is.
-using overflow from overflow.qz;
+using std.overflow;
 
 int main(){
     uint a = 19;
