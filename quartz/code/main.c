@@ -8,7 +8,6 @@ void print_usage(){
 
     printf("Usage: quartz [options] file...\n");
     printf("Options:\n");
-    printf("  -c      Only compiles the code to C\n");
     printf("  --help  Prints this message.       \n");
     printf("\n");
 

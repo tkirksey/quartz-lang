@@ -1,0 +1,50 @@
+
+bool overflow(operator op, var<A> a, var<B> b) : A.include(uint, int), B.include(uint, int) {
+
+    if(a.is(uint) && b.is(uint) && op.is(-)){
+        return uint_sub_overflow(a, b);
+    }
+
+    if(a.is(int) && b.is(int) && op.is(-)){
+        return int_sub_overflow(a, b);
+    }
+
+}
+
+@hidden
+bool uint_sub_overflow(uint a, uint b){
+    return a < b;
+}
+
+@hidden
+bool int_sub_overflow(int a, int b){
+    
+    // a is - and b is -
+    if(a < 0 && b < 0){
+        return false;
+    }
+
+    // a is + and b is +
+    if(a >= 0 && b >= 0){
+        return false
+    }
+
+    int result = a - b;
+
+    // a is - and b is +
+    if(a < 0 && b >= 0){
+        if(result >= 0){
+            return true;
+        }
+    }
+
+    // a is + and b is -
+    if(a >= 0 && b < 0){
+        if(result < 0){
+            return true;
+        }
+    }
+
+    return false;
+
+}
