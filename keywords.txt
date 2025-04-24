@@ -6,12 +6,10 @@ Datatypes:
 
     bool
     string
+    char
 
     var    
     void
-
-    operator
-    literal
 
 Contol:
     if

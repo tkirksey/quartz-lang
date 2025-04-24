@@ -1,0 +1,19 @@
+// variable.qz
+
+int main(void){
+
+    int i = 1;
+    int j = 2;
+    int k = i + j;
+
+    println("i: ${i}, j: ${j}, k: ${k}");
+
+    float aa = 0.2;
+    float bb = 0.6;
+    float cc = b - a;
+
+    println("aa: ${aa}, bb: ${bb}, cc: ${cc}");
+
+    return 0;
+
+}
