@@ -1,5 +1,7 @@
 // variable.qz
 
+using std.io;
+
 int main(void){
 
     int i = 1;
