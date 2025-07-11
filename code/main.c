@@ -22,19 +22,9 @@ int main(int argc, char** argv){
 
     // Step 1: parse arguments for flags and seperate potential input files
 
-    /*
-    
-        psuedocode:
-
-        check if argument starts with '-'
-        if so, evaulate flag an increment index accordingly
-        else, add argument to input files list
-    
-    */
-
     char* input_filepaths_array[argc - 1];
 
-    // input files
+    // input filepaths setup
     input_filepaths_t input_filepaths = {
 
         .input_filepaths_array = input_filepaths_array,
@@ -42,7 +32,7 @@ int main(int argc, char** argv){
 
     };
 
-    // flag variables
+    // flag variables setup
     flag_values_t flag_values = {
 
         .output_filename = "a.out"
@@ -51,15 +41,13 @@ int main(int argc, char** argv){
 
     parse_args(argc, argv, &flag_values, &input_filepaths);
 
-    // Step 2: filter out .qz file
+    // Step 2: filter out only .qz file
 
     filter_input_filepaths(&input_filepaths);
 
     
     /*
-    
-        Tests for step 1 & 2
-    
+        Tests for steps 1 & 2
     */
 
     // printf("Flags:\n");
