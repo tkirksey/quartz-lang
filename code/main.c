@@ -20,7 +20,7 @@ int main(int argc, char** argv){
         exit(EXIT_SUCCESS);
     }
 
-    // Step 1: parse arguments for flags and seperate potential input files
+    // Step 1: parse arguments for flags and input filepaths
 
     char* input_filepaths_array[argc - 1];
 
@@ -40,14 +40,10 @@ int main(int argc, char** argv){
     };
 
     parse_args(argc, argv, &flag_values, &input_filepaths);
-
-    // Step 2: filter out only .qz file
-
     filter_input_filepaths(&input_filepaths);
-
     
     /*
-        Tests for steps 1 & 2
+        validation testing for steps 1
     */
 
     // printf("Flags:\n");
