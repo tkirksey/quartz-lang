@@ -1,10 +1,12 @@
+@future:
+
 // this is an implementation of a clamp function 
 // with the use of function contracts
 //
-// in this example, after adding the ':' you can specifiy 
-// boolean functions that will run before the function does.
+// in this example, after adding the ':' you can specifiy a
+// boolean function that will run before the function does.
 // if the caller "breaks the contract" then the function
-// will not run and then and error will be thrown
+// will not run and then an error will be thrown
 
 int clamp(int lowBound, int highBound, int* value) : value != null {
 
@@ -22,32 +24,32 @@ int clamp(int lowBound, int highBound, int* value) : value != null {
 
 }
 
-// an Example of the function being used:
-// 
-// using std.io;
-// 
-// int main(){
-// 
-//     int numToBeClamped = 9;
-//     int* ptrToNum;                          // if a pointer isn't initilized, it is initialized as null
-// 
-//     try {                                   // in this try block, the function will run because the contract is upheld
-// 
-//         clamp(0, 7, &numToBeClamped);
-// 
-//     }
-// 
-//     try {                                   // in this try block, the function will not run and cause a crash dump.
-// 
-//         clamp(0, 7, ptrToNum);
-// 
-//     }
-// 
-// 
-// 
-//     return 0;
-// }
-//
+// an Example of the function being used: 
+
+using std.io;
+
+int main(){
+
+    int numToBeClamped = 9;
+    int* ptrToNum;                          // if a pointer isn't initilized, it is initialized as null
+
+    try {                                   // in this try block, the function will run because the contract is upheld
+
+        clamp(0, 7, &numToBeClamped);
+
+    }
+
+    try {                                   // in this try block, the function will not run and cause a crash dump.
+
+        clamp(0, 7, ptrToNum);
+
+    }
+
+
+
+    return 0;
+}
+
 // a weird quirk of contracts
 //
 // if the function with a contract is not wrapped in a try block, the contract is ignored.

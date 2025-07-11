@@ -1,0 +1,31 @@
+@future: // planned array storage idea
+
+The array datatype that is the backbone for all arrays
+
+it is layout like this:
+
+array
+ |- Type (An enum that has the byte size of all datatypes)
+ |- Sizes[] (an array of integers that contain the size data of the array)
+ |      |- [0] # of dimensions
+ |      |- [1] size of dimension 1
+ |      |- [...]
+ |      |- [n] size of dimension n
+ |
+ |- Data
+
+In memory: [ TYPE ][ ... SIZE ... ][ ... DATA ... ]
+
+Same as C, '<var_name>[0]' will still be functionally equivalent to '*<var_name>'
+
+to create a C Style array you do:
+
+    #c int <var_name>[] = {0, 1, 2, 4, 8};
+
+array
+ |- Type
+ |- Sizes[]
+ |     |- [0] # of dimensions
+ |     |- [n] size of dimension
+ |
+ |- Data

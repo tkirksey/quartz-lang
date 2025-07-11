@@ -1,3 +1,5 @@
+@baseline:
+
 // helloworld.qz
 
 using std.io;

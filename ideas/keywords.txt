@@ -1,0 +1,27 @@
+Datatypes:
+    @baseline:  int
+    @baseline:  uint
+    @baseline:  float
+    @baseline:  ufloat
+
+    @baseline:  bool
+    @future:    string
+    @baseline:  char
+    
+    @baseline:  void
+
+Contol:
+    @baseline:  if
+    @baseline:  else
+    @baseline:  while
+    @baseline:  for
+    @future:    until
+
+    @baseline:  return
+    @baseline:  break
+    @baseline:  continue
+    @baseline:  exit
+
+Structures:
+    @baseline: enum
+    @baseline: struct
