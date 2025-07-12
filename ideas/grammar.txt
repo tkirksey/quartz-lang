@@ -1,0 +1,3 @@
+variable_definition = variable_declaration, " = ", data_value; 
+variable_declaration = data_type, " ", name;
+name = letter, {letter | number};
