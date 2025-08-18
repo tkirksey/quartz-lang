@@ -1,2 +1,2 @@
 #! /usr/bin/bash
-gcc -Werror -Wall -Wextra -o qzc ./src/*.c
+g++ -Werror -Wall -Wextra -o qzc ./src/*.cpp
