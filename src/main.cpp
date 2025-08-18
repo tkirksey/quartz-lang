@@ -14,6 +14,8 @@ int main(int argc, char** argv){
 
     process_args(argc, argv, &input_filepaths);
 
+    printf("[Debug]: finished processing arguments.\n");
+
     if(input_filepaths.empty()){
         printf("[Fatal]: no input files\n");
         exit(EXIT_FAILURE);
