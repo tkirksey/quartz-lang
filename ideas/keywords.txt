@@ -5,12 +5,12 @@ Datatypes:
     @baseline:  ufloat
 
     @baseline:  bool
-    @future:    string
+    @baseline:  string
     @baseline:  char
     
     @baseline:  void
 
-Contol:
+Control:
     @baseline:  if
     @baseline:  else
     @baseline:  while
@@ -23,5 +23,8 @@ Contol:
     @baseline:  exit
 
 Structures:
-    @baseline: enum
-    @baseline: struct
+    @baseline:  enum
+    @baseline:  struct
+
+Linker:
+    @baseline:  using

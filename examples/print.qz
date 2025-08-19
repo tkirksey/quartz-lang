@@ -1,0 +1,17 @@
+using std.io;
+
+void main(){
+
+    println("Hello World!");
+
+    string name = "John Doe";
+
+    println("Hello ${name}!");
+
+    float price = 2.99;
+
+    println("Your total came out to $${price}.");
+
+    println("Have a good one Mr. ${name.substr(5)}!");
+
+}

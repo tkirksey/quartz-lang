@@ -1,2 +1,2 @@
 #! /usr/bin/bash
-g++ -Werror -Wall -Wextra -o qzc ./src/*.cpp
+g++ -std=c++11 -Werror -Wall -Wextra -I./src/headers -o qzc ./src/*.cpp 

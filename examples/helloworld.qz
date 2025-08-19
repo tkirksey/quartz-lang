@@ -1,10 +1,8 @@
-@baseline:
-
 // helloworld.qz
 
 using std.io;
 
-int main(void){
+void main(){
 
     println("Hello World!");
 

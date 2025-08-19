@@ -26,8 +26,6 @@ int clamp(int lowBound, int highBound, int* value) : value != null {
 
 // an Example of the function being used: 
 
-using std.io;
-
 int main(){
 
     int numToBeClamped = 9;
@@ -44,8 +42,6 @@ int main(){
         clamp(0, 7, ptrToNum);
 
     }
-
-
 
     return 0;
 }

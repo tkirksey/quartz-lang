@@ -16,16 +16,4 @@ array
 
 In memory: [ TYPE ][ ... SIZE ... ][ ... DATA ... ]
 
-Same as C, '<var_name>[0]' will still be functionally equivalent to '*<var_name>'
-
-to create a C Style array you do:
-
-    #c int <var_name>[] = {0, 1, 2, 4, 8};
-
-array
- |- Type
- |- Sizes[]
- |     |- [0] # of dimensions
- |     |- [n] size of dimension
- |
- |- Data
+Unlike C, '<arrayname>[0]' will not be functionally equivalent to '*<arrayname>'. The syntax '*<arrayname>' will de-reference a pointed to array to perform operations with.

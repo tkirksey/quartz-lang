@@ -1,0 +1,51 @@
+// In quartz, when you write a function, whatever the function's first parameter's datatype is,
+// that datatype will be able to call that function like a method in an object oriented language.
+// 
+// for example:
+
+using std.io;
+
+int square(int i){
+    return i * i;
+}
+
+// under the hood, the compiler translates 'a.square()' to 'square(a)'
+//
+// This is not only limited to one parameter functions either
+//
+// another example:
+
+int gcd(int a, int b){
+
+    int gcd = 1;
+    
+    for(int new_gcd = 2; (new_gcd <= a) && (new_gcd <= b); new_gcd += 1){
+
+        if((a % new_gcd == 0) && (b % new_gcd == 0)){
+
+            gcd = new_gcd;
+
+        }
+
+    }
+
+    return gcd;
+
+}
+
+// main code block
+
+void main(){
+
+    int a = 2;
+
+    println("2 squared equals: ${a.square()}");
+
+    int b = 16;
+    int c = 12;
+
+    println("The greatest common denominator of ${b} and ${c} is ${b.gcd(c)}");
+
+}
+
+
