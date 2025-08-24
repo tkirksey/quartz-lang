@@ -4,7 +4,10 @@
 #include <string>
 using std::string;
 
-enum Token {
+#include <vector>
+using std::vector;
+
+enum Token_Type {
 
     TOK_EOF,
     TOK_SEMIC,
@@ -19,20 +22,22 @@ enum Token {
     // TOK_L_SQ_BRACKET, // for array implementation
     // TOK_R_SQ_BRACKET,
 
-    TOK_KEY_USING,
-    TOK_KEY_IF,
-    TOK_KEY_ELSE,
-    TOK_KEY_WHILE,
-    TOK_KEY_FOR,
+    TOK_KEY,
 
     TOK_DOT,
     TOK_NUMBER,
-    TOK_STR_LITERAL,
-    // TOK_VARIABLE_INSERT, // for println("Hello $somevar, how are you doing?");
-
-    TOK_COMMENT
+    TOK_STR_LITERAL
+    
+    // TOK_COMMENT // for future debug comment saving capability
 
 };
+
+typedef struct {
+
+    Token_Type token_type;
+    string* str_data;
+
+} Token;
 
 void lexer(char* filepath){
 
@@ -45,6 +50,63 @@ void lexer(char* filepath){
 
     }
 
-    
+    vector<Token>* token_list = new vector<Token>();
+
+    string* currentLine;
+
+    while((currentLine = getNextLine(openfile)) != NULL){
+
+        // if current line is a new line skip
+        if(currentLine->length() == 0){
+            delete currentLine;
+            continue;
+        }
+
+        // TODO: Add ability to keep comments on a debug compilation
+        if(currentLine->substr(0, 2).compare("//") == 0){
+            delete currentLine;
+            continue;
+        }
+
+        // TODO: Start lexing line for tokens (8/24/25)
+
+    }
+
+}
+
+/**
+ * @brief Get the Next Line object
+ * 
+ * @param openFile the file to get the next line from
+ * @return string* A heap allocated string of the next line
+ */
+string* getNextLine(FILE* openFile){
+
+    /* 
+        TODO:   Add windows '\r\n' check if compiled for windows. 
+        TODO:   for any parts of the code that check for newlines.
+    */ 
+
+    char nextChar = fgetc(openFile);
+
+    if(nextChar == EOF){
+        return NULL;
+    }
+
+    if(nextChar == '\n'){
+        return new string("");
+    }
+
+    string* currentLine = new string();
+
+    // trim line of leading whitespaces
+    while(isblank(nextChar)){
+        nextChar = fgetc(openFile);
+    }        
+
+    while(nextChar != '\n' || nextChar != EOF){
+        currentLine += nextChar;
+        nextChar = fgetc(openFile);
+    }
 
 }
