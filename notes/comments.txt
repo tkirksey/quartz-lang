@@ -1,0 +1,8 @@
+In quartz the only valid comments are:
+
+    // entire line comments
+
+    and // partial line comments
+
+Maybe block comments will be added in the future,
+but for now I'm not stressing over it.

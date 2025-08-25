@@ -1,11 +1,13 @@
-#include <cstdio>
 #include <cctype>
-
+#include <cstdio>
+#include <fstream>
 #include <string>
-using std::string;
-
 #include <vector>
+
+using std::ifstream;
+using std::string;
 using std::vector;
+using std::getline;
 
 enum Token_Type {
 
@@ -39,81 +41,58 @@ typedef struct {
 
 } Token;
 
+void trimLeadingSpaces(string* currentLine);
+void trimComments(string* currentLine);
+
 void lexer(char* filepath){
 
-    FILE* openFile = fopen(filepath, "r");
+    ifstream openFile;
+    openFile.open(filepath, ifstream::in);
 
-    if(openFile == NULL){
-
-        printf("[Error]: Failed to open '%s'.\n", filepath);
+    if(!openFile.is_open()){
+        printf("[Error]: couldn't open the file '%s'.\n", filepath);
         return;
-
     }
 
     vector<Token>* token_list = new vector<Token>();
 
-    string* currentLine;
+    string currentLine;
     unsigned int lineCount = 0;
 
-    while((currentLine = getNextLine(openFile)) != NULL){
+    while(getline(openFile, currentLine)){
 
         lineCount += 1;
 
-        // if current line is a new line, skip it
-        if(currentLine->length() == 0){
-            delete currentLine;
+        trimLeadingSpaces(&currentLine);
+        trimComments(&currentLine);
+
+        if(currentLine.empty()){
             continue;
         }
-        
-        // TODO: Write handles for block comments (8/24/25)
 
-        // TODO: Start lexing line for tokens (8/24/25)
+        // TODO: start lexing for tokens
 
+    }
+
+    openFile.close();
+
+}
+
+void trimLeadingSpaces(string* currentLine){
+
+    size_t trimmedStringStart = currentLine->find_first_not_of(" \t");
+    if(trimmedStringStart != string::npos){
+        *currentLine = currentLine->substr(trimmedStringStart);
     }
 
 }
 
-/**
- * @brief Get the Next Line object
- * 
- * @param openFile the file to get the next line from
- * @return string* A heap allocated string of the next line
- */
-string* getNextLine(FILE* openFile){ 
+void trimComments(string* currentLine){
+    
+    size_t commentStart = currentLine->find("//");
 
-    char nextChar = fgetc(openFile);
-
-    if(nextChar == EOF){
-        return NULL;
+    if(commentStart != string::npos){
+        *currentLine = currentLine->substr(0, commentStart);
     }
-
-    string* currentLine = new string("");
-
-    // trims leading whitespaces ('\t' && ' ')
-    while(isblank(nextChar)){
-        nextChar = fgetc(openFile);
-    }        
-
-    while(nextChar != EOF){
-
-        if(nextChar == '\n'){
-            break;
-        }
-        
-        /*
-            This code tries to catch the
-            signature of a CRLF newline from
-            DOS based systems that could've
-            written the file.
-        */
-        if(nextChar != '\r'){
-            currentLine += nextChar;
-        }
-
-        nextChar = fgetc(openFile);
-
-    }
-
-    return currentLine;
 
 }
