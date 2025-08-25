@@ -56,13 +56,15 @@ void lexer(char* filepath){
 
     while((currentLine = getNextLine(openfile)) != NULL){
 
-        // if current line is a new line skip
+        // if current line is a new line, skip it
         if(currentLine->length() == 0){
             delete currentLine;
             continue;
         }
 
-        // TODO: Add ability to keep comments on a debug compilation
+        
+        // if current line is a comment, skip it
+        // FUTURE: Add ability to keep comments on a debug compilation
         if(currentLine->substr(0, 2).compare("//") == 0){
             delete currentLine;
             continue;
@@ -80,12 +82,7 @@ void lexer(char* filepath){
  * @param openFile the file to get the next line from
  * @return string* A heap allocated string of the next line
  */
-string* getNextLine(FILE* openFile){
-
-    /* 
-        TODO:   Add windows '\r\n' check if compiled for windows. 
-        TODO:   for any parts of the code that check for newlines.
-    */ 
+string* getNextLine(FILE* openFile){ 
 
     char nextChar = fgetc(openFile);
 
@@ -93,20 +90,33 @@ string* getNextLine(FILE* openFile){
         return NULL;
     }
 
-    if(nextChar == '\n'){
-        return new string("");
-    }
+    string* currentLine = new string("");
 
-    string* currentLine = new string();
-
-    // trim line of leading whitespaces
+    // trims leading whitespaces ('\t' && ' ')
     while(isblank(nextChar)){
         nextChar = fgetc(openFile);
     }        
 
-    while(nextChar != '\n' || nextChar != EOF){
-        currentLine += nextChar;
+    while(nextChar != EOF){
+
+        if(nextChar == '\n'){
+            break;
+        }
+        
+        /*
+            This code tries to catch the
+            signature of a CRLF newline from
+            DOS based systems that could've
+            written the file.
+        */
+        if(nextChar != '\r'){
+            currentLine += nextChar;
+        }
+
         nextChar = fgetc(openFile);
+
     }
+
+    return currentLine;
 
 }

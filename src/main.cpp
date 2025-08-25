@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#include "process_args.hpp"
+#include "processArgs.hpp"
 #include "lexer.hpp"
 
 #include <vector>
@@ -13,7 +13,7 @@ int main(int argc, char** argv){
 
     vector<char*> input_filepaths;
 
-    process_args(argc, argv, &input_filepaths);
+    processArgs(argc, argv, &input_filepaths);
 
     printf("[Debug]: finished processing arguments.\n");
 

@@ -4,6 +4,6 @@
 #include <vector>
 using std::vector;
 
-void process_args(int ARGC, char **ARGV, vector<char*>* input_filepaths);
+void processArgs(int ARGC, char **ARGV, vector<char*>* inputFilepaths);
 
 #endif
