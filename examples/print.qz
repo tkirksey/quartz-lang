@@ -6,12 +6,33 @@ void main(){
 
     string name = "John Doe";
 
+    /*
+        To have the contents of a variable be
+        inserted into a string, you have to use
+        this syntax, '${<variable name here>}'.
+
+        The compiler will then use the datatypes
+        'toString()' function if provided,
+        otherwise it will just hexadecimal data
+        stored in the variable.
+
+        all the primative data types in quartz
+        have 'toString()' functions defined for
+        them, with some having overloads to fine
+        tune the output (for example, floats allowing
+        you to specifiy the amount of decimal places
+        in its string form).
+    */
     println("Hello ${name}!");
 
     float price = 2.99;
 
-    println("Your total came out to $${price}.");
+    /*
+        In this example, we have to escape the the
+        '$' for it show up in the output.
+    */
+    println("Your total came out to \$${price.toString(2)}.");
 
-    println("Have a good one Mr. ${name.substr(5)}!");
+    println("Have a good one Mr. ${name.substring(5)}!");
 
 }

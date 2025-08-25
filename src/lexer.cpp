@@ -41,9 +41,9 @@ typedef struct {
 
 void lexer(char* filepath){
 
-    FILE* openfile = fopen(filepath, "r");
+    FILE* openFile = fopen(filepath, "r");
 
-    if(openfile == NULL){
+    if(openFile == NULL){
 
         printf("[Error]: Failed to open '%s'.\n", filepath);
         return;
@@ -53,22 +53,19 @@ void lexer(char* filepath){
     vector<Token>* token_list = new vector<Token>();
 
     string* currentLine;
+    unsigned int lineCount = 0;
 
-    while((currentLine = getNextLine(openfile)) != NULL){
+    while((currentLine = getNextLine(openFile)) != NULL){
+
+        lineCount += 1;
 
         // if current line is a new line, skip it
         if(currentLine->length() == 0){
             delete currentLine;
             continue;
         }
-
         
-        // if current line is a comment, skip it
-        // FUTURE: Add ability to keep comments on a debug compilation
-        if(currentLine->substr(0, 2).compare("//") == 0){
-            delete currentLine;
-            continue;
-        }
+        // TODO: Write handles for block comments (8/24/25)
 
         // TODO: Start lexing line for tokens (8/24/25)
 
