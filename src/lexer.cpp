@@ -72,6 +72,77 @@ void lexer(char* filepath){
 
         // TODO: start lexing for tokens
 
+        vector<string> lineSplit;
+        size_t firstSpaceIndex = currentLine.find_first_of(' ');
+        
+        while(firstSpaceIndex != string::npos){
+
+            lineSplit.push_back(currentLine.substr(0, firstSpaceIndex));
+            currentLine = currentLine.substr((firstSpaceIndex + 1));
+            firstSpaceIndex = currentLine.find_first_of(' ');
+
+        }
+
+        lineSplit.push_back(currentLine);
+
+        for(string split : lineSplit){
+
+            Token tok;
+
+            if(split.compare("int") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("int");
+                goto PUSH;
+            }
+
+            if(split.compare("void") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("void");
+                goto PUSH;
+            }
+
+            if(split.compare("float") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("float");
+                goto PUSH;
+            }
+
+            if(split.compare("bool") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("bool");
+                goto PUSH;
+            }
+
+            if(split.compare("char") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("char");
+                goto PUSH;
+            }
+            
+            if(split.compare("string") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("string");
+                goto PUSH;
+            }
+
+            if(split.compare("void") == 0){
+                tok.token_type = TOK_DATATYPE;
+                tok.str_data = new string("void");
+                goto PUSH;
+            }
+
+            if(split.compare("using") == 0){
+                tok.token_type = TOK_KEY;
+                tok.str_data = new string("using");
+                goto PUSH;
+            }
+
+            PUSH:
+            token_list->push_back(tok);
+
+        }
+
+
     }
 
     openFile.close();
