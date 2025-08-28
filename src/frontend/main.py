@@ -26,7 +26,6 @@ def main():
 
     lexer(quartzFiles=quartzFiles, enableWerror=enableWerror)
     
-
 def processFlags():
 
     global enableWerror
