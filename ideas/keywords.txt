@@ -1,29 +1,19 @@
-Datatypes:
-    @baseline:  int
-    @baseline:  uint
-    @baseline:  float
-
-    @baseline:  bool
-    @baseline:  string
-    @baseline:  char
-    
-    @baseline:  void
-
-Control:
-    @baseline:  if
-    @baseline:  else
-    @baseline:  while
-    @baseline:  for
-    @future:    until
-
-    @baseline:  return
-    @baseline:  break
-    @baseline:  continue
-    @baseline:  exit
-
-Structures:
-    @future:  enum
-    @future:  struct
-
-Linker:
-    @baseline:  using
+bool
+break
+char
+continue
+else
+enum
+exit
+float
+for
+if
+int
+return
+string
+struct
+typecast
+uint
+using
+void
+while

@@ -1,0 +1,47 @@
+// typecast.qz
+
+using std.io;
+
+struct Point2D {
+    float x;
+    float y;
+}
+
+struct Point3D {
+    float x;
+    float y;
+    float z;
+}
+
+void main(){
+
+    int almostPie = int(3.1415);
+     
+    println("almostPie: ${almostPie}");
+
+    Point3D higherDimensionPoint = {
+        .x = 3.0,
+        .y = 4.0,
+        .z = 5.0
+    };
+    
+    Point2D flatDimensionPoint = Point2D(higherDimensionPoint);
+
+    println(flatDimensionalPoint);
+
+}
+
+typecast Point2D(Point3D){
+
+    return {
+        .x = Point3D.x, 
+        .y = Point3D.y
+    };
+
+}
+
+string toString(Point2D point2D){
+
+    return "Point2D: {x: ${point2D.x}, y: ${point2D.y}}";
+
+}
