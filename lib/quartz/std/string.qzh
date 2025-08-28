@@ -1,0 +1,7 @@
+## Returns the last valid index of a string
+uint lastIndex(string str);
+
+## Returns if the substring needle is in the string haystack
+# haystack: the string to search
+# needle: the substring to look for
+bool contains(string haystack, sting needle);

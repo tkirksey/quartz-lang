@@ -1,0 +1,6 @@
+In quartz, libraries should contain at least two files:
+    1.  a header file ('.qzh') that exposes the function signatures and datatypes.
+    2.  a shared object file ('.qzso') that contains the precompiled code 
+        for the linker to link to.
+
+The header file is also where you can provide documentation for the function.

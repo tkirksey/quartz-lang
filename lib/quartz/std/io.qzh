@@ -1,0 +1,5 @@
+## Prints the string str followed by a newline character to stdout
+void println(string str);
+
+## Prints the string str to stdout;
+void print(string str);

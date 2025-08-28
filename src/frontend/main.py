@@ -1,77 +1,83 @@
 import sys
-from lexer import lexer
+
+import lexer
+import config
+
+import log
 
 arguments = sys.argv[1:]
 
-quartzFiles = set()
-outputFilepath = "a.out"
-enableWerror = False
-
 def main():
-    
+
     processFlags()
-    
-    global enableWerror
-    global outputFilepath
-    global quartzFiles
 
-    print("Parsed Flags:")
-    print(f"- Output Filepath:  {outputFilepath}")
-    print(f"- Enable Werror:    {enableWerror}")
-    print("")
-    print("Parsed Files: ")
-    for file in quartzFiles:
-        print(f"- {file}")
-    print("")
+    log.printLog()
 
-    lexer(quartzFiles=quartzFiles, enableWerror=enableWerror)
+    if log.filterFatals():
+        exit()
+
+    log.clearLog()
+
+    # print('Parsed Flags:')
+    # print(f'- Output Filepath:  {config.OUTPUT_FILEPATH}')
+    # print(f'- Enable Werror:    {config.ENABLE_WERROR}')
+    # print('')
+    # print('Parsed Files: ')
+    # for file in config.QUARTZ_FILES:
+    #     print(f'- {file}')
+    # print('')
+
+    for filepath in config.QUARTZ_FILES:
+        lexer.startLexer(filepath)
+        
+        log.printLog()
+
+        if log.filterFatals():
+            exit()
+        
     
 def processFlags():
-
-    global enableWerror
-    global outputFilepath
-    global quartzFiles
-
-    if len(arguments) == 0:
-        print("[Error]: no input files passed.")
-        exit()
     
-    if "-h" in arguments or "--help" in arguments:
+    if '-h' in arguments or '--help' in arguments:
         printHelp()
         exit()
 
-    if "--werror" in arguments:
-        enableWerror = True
+    if '-werror' in arguments:
+        config.ENABLE_WERROR = True
     else:
-        enableWerror = False
+        config.ENABLE_WERROR = False
 
-    if "-o" in arguments or "--output" in arguments:
+    if '-o' in arguments or '--output' in arguments:
         
         index = -1
         
         try:
-            index = arguments.index("-o")
+            index = arguments.index('-o')
         except ValueError:
-            index = arguments.index("--output")
+            index = arguments.index('--output')
 
         index += 1
 
-        if len(arguments[index:]) == 0:
-            print("[Warning]: no output filepath passed with '--output/-o' flag.")
+        if len(arguments[index:]) == 0 or arguments[index].startswith('-'):
+            log.error(f'missing filename after \'{arguments[index - 1]}\'.')
         else:
-            outputFilepath = arguments[index]
+            config.OUTPUT_FILEPATH = arguments[index]
 
     for arg in arguments:
-        if arg.endswith(".qz") and len(arg) > 3:
-            quartzFiles.add(arg)
+        if arg.endswith('.qz') and len(arg) > 3:
+            config.QUARTZ_FILES.add(arg)
+
+    if len(config.QUARTZ_FILES) == 0:
+        log.fatal('no input files passed.')
+        return
 
 def printHelp():
-    print("Usage: qzc [Options] file...")
-    print("")
-    print("Options:")
-    print("  --output  -o    changes the filepath of the output file.")
-    print("  --werror        enables treating warnings as errors (NOT FUNCTIONAL)")
-    print("  --help    -h    displays this menu")
-    print("")
+    print('Usage: qzc [Options] file...')
+    print('')
+    print('Options:')
+    print('  --output  -o    changes the filepath of the output file.')
+    print('  -werror         enables treating warnings as errors (NOT FUNCTIONAL)')
+    print('  --help    -h    displays this menu')
+    print('')
 
 main()
