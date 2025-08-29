@@ -24,13 +24,13 @@ void main(){
 
     float price = 2.99;
 
-    println("Your total came out to $" + price.toString(2) + ".");
+    println("Your total came out to $" + string(price, 2) + ".");
 
     println("Have a good one Mr. ${name.split(' ')[1]}!");
 
 }
 
-typecas string(float flt, uint places){
+typecast string(float flt, uint places){
 
     int temp = int(flt * power(10, places));
 
