@@ -1,8 +1,8 @@
 // print.qz
 
 using std.io;
-using std.math; // for power()
-using std.string; // for lastIndex()
+using std.math.power();
+using std.string.lastIndex();
 
 void main(){
 

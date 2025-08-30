@@ -27,14 +27,25 @@ def main():
     #     print(f'- {file}')
     # print('')
 
+    errorOccured = False
+
     for filepath in config.QUARTZ_FILES:
         lexer.startLexer(filepath)
         
         log.printLog()
 
+        if log.filterErrors():
+            errorOccured = True
+
         if log.filterFatals():
             exit()
-        
+
+        log.clearLog()
+
+    if errorOccured:
+        log.fatal('error(s) occured during compilation.')
+        log.printLog()
+        exit()
     
 def processFlags():
     
