@@ -30,7 +30,15 @@ def tokenizer(quartzFilepath: str):
 def getTokens(line : str, lineNumber : int):
     
     tokens = []
+    token = token_t()
+    token.lineNum = lineNumber
 
-
+    # read in line char by char and pattern match a token
 
     return tokens
+
+class token_t:
+    tokenType = ''
+    tokenValue = object()
+    lineNum = -1
+    lineCol = -1
