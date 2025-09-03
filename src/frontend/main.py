@@ -1,6 +1,6 @@
 import sys
 
-import lexer
+from tokenizer import tokenizer
 import config
 
 import log
@@ -18,35 +18,23 @@ def main():
 
     log.clearLog()
 
-    # print('Parsed Flags:')
-    # print(f'- Output Filepath:  {config.OUTPUT_FILEPATH}')
-    # print(f'- Enable Werror:    {config.ENABLE_WERROR}')
-    # print('')
-    # print('Parsed Files: ')
-    # for file in config.QUARTZ_FILES:
-    #     print(f'- {file}')
-    # print('')
-
-    errorOccured = False
+    tokens = []
 
     for filepath in config.QUARTZ_FILES:
-        lexer.startLexer(filepath)
+
+        tokens.append(tokenizer(filepath))
         
         log.printLog()
-
-        if log.filterErrors():
-            errorOccured = True
 
         if log.filterFatals():
             exit()
 
         log.clearLog()
 
-    if errorOccured:
-        log.fatal('error(s) occured during compilation.')
-        log.printLog()
-        exit()
-    
+    # invoke parser with tokens received
+
+    # pass AST to backend for final compilation
+
 def processFlags():
     
     if '-h' in arguments or '--help' in arguments:
