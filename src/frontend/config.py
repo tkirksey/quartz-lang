@@ -1,3 +1,0 @@
-OUTPUT_FILEPATH = 'a.out'
-ENABLE_WERROR = False
-QUARTZ_FILES = set()
