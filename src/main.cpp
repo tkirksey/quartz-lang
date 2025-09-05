@@ -23,9 +23,7 @@ int main(int argc, char** argv){
         exit(EXIT_FAILURE);
     }
 
-    vector<Token>* tokens = lexer(INPUT_FILEPATHS);
-
-    
+    vector<Token*>* tokens = lexer(INPUT_FILEPATHS);
 
     return 0;
 }
