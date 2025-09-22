@@ -1,2 +1,2 @@
 ## returns base to the power of exponent
-float power(float base, float exponent);
+double power(double base, double exponent);

@@ -1,7 +1,12 @@
-## Returns the last valid index of a string
-uint lastIndex(string str);
+## returns true if the string contains the substr provided
+bool string.contains(string substr);
 
-## Returns if the substring needle is in the string haystack
-# haystack: the string to search
-# needle: the substring to look for
-bool contains(string haystack, sting needle);
+## returns the size of the string
+uint string.size();
+
+## returns a substring from the starting index
+string string.substr(uint start);
+
+## returns a substring from the starting index with the provided length
+string string.substr(uint start, uint length);
+

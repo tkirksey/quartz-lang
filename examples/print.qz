@@ -1,8 +1,8 @@
 // print.qz
 
 using std.io;
-using std.math.power();
-using std.string.lastIndex();
+using std.math;
+using std.string;
 
 void main(){
 
@@ -10,33 +10,24 @@ void main(){
 
     string name = "John Doe";
 
-    //  if you want to insert the value of a
-    //  datatype in to a string, you can use
-    //  this syntax "${<variable_name>}"
-    //
-    //  this is done internally by calling the
-    //  datatype's typecast to string. All the
-    //  basic data types have a typecasts for
-    //  string already defined. You can even write
-    //  a custom typecast if you want to.
-
-    println("Hello ${name}!"); 
+    println("Hello %{name}!");  
 
     float price = 2.99;
 
-    println("Your total came out to $" + string(price, 2) + ".");
+    println("Your total came out to $%{string(price, 2)}.");
 
-    println("Have a good one Mr. ${name.split(' ')[1]}!");
+    println("Have a good one Mr. %{name.split(' ')[1]}!");
 
 }
 
+## casts a float to a sting with a specfic amount of decimal places
 typecast string(float flt, uint places){
 
     int temp = int(flt * power(10, places));
 
     string result = string(temp);
 
-    result = result.insert('.', (result.lastIndex() - places));
+    result.insert('.', ((result.size() - 1) - places));
 
     return result;
 

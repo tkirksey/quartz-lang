@@ -1,19 +1,37 @@
-bool
-break
-char
-continue
-else
-enum
-exit
-float
-for
-if
-int
-return
-string
-struct
-typecast
-uint
-using
-void
-while
+Datatypes:
+    bool
+    char
+    int
+    uint
+    double
+    string
+
+Control:
+    if 
+    else
+    for
+    while
+    switch
+    case
+    break
+    continue
+
+Allocate:
+    new
+    delete
+
+Linker:
+    using
+
+Function:
+    typecast
+    void
+
+Structures:
+    struct
+    enum
+
+Modifier:
+    const
+    public
+

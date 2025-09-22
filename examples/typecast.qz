@@ -3,27 +3,23 @@
 using std.io;
 
 struct Point2D {
-    float x;
-    float y;
+    double x;
+    double y;
 }
 
 struct Point3D {
-    float x;
-    float y;
-    float z;
+    double x;
+    double y;
+    double z;
 }
 
 void main(){
 
     int almostPie = int(3.1415);
      
-    println("almostPie: ${almostPie}");
+    println("almostPie: %{almostPie}");
 
-    Point3D higherDimensionPoint = {
-        .x = 3.0,
-        .y = 4.0,
-        .z = 5.0
-    };
+    Point3D higherDimensionPoint = Point3D(.x = 3.0, .y = 4.0, .z = 5.0);
     
     Point2D flatDimensionPoint = Point2D(higherDimensionPoint);
 
@@ -31,17 +27,16 @@ void main(){
 
 }
 
+## casts a Point3D to a Point2D
 typecast Point2D(Point3D){
 
-    return {
-        .x = Point3D.x, 
-        .y = Point3D.y
-    };
+    return Point2D(.x = Point3D.x, .y = Point3D.y);
 
 }
 
-string toString(Point2D point2D){
+## casts a Point2D to a string
+typecast string(Point2D){
 
-    return "Point2D: {x: ${point2D.x}, y: ${point2D.y}}";
+    return "Point2D: {x: %{Point2D.x}, y: %{Point2D.y}}";
 
 }
