@@ -26,6 +26,7 @@ Linker:
 Function:
     typecast
     void
+    this
 
 Structures:
     struct
@@ -34,4 +35,3 @@ Structures:
 Modifier:
     const
     public
-
