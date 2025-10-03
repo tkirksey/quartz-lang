@@ -1,0 +1,118 @@
+Syntax for creating expansion functions
+
+Traditionally you can add two numbers with a function like so:
+
+int add(int rhs, int lhs){
+    return rhs + lhs;
+}
+
+with expansion functions, you will be able to call add on an int that is
+already declared.
+
+expand int {
+
+    int add(int lhs){
+        
+        return this + lhs;
+
+    }
+
+}
+
+/ --------------- /
+
+Using a traditional function call
+
+int a = 3;
+int b = 4;
+int c = add(a, b);
+
+Using the expansion function we created
+
+int a = 3;
+int b = 4;
+int c = a.add(b);
+
+/ --------------- /
+
+You can use this with structs to create a pseudo object-oriented work flow.
+
+Example:
+
+struct Book {
+
+    string author;
+    string title;
+    uint id;
+
+}
+
+expand Book {
+
+    void setTitle(string title) {
+
+        this.title = title;
+
+    }
+
+    string getTitle() {
+
+        return this.title;
+
+    }
+
+}
+
+void main(){
+
+    Book*[] library;
+
+    library.add(new Book("Herman Melville", "Moby Dick", 3001));
+
+}
+
+quartz is not intended to be an object oriented language, but it give you the
+tools to brute force it. With the example above, it is emulating a Book class 
+with a struct and expansion functions on that struct;
+
+A better use of this feature would be to create functions that would traditionally
+need you to pass a variable to modify or use to get a result based upon its value.
+
+expand string {
+
+    string substr(uint start, uint end) {
+
+        string substring = "";
+
+        for(uint index = start; index < end; index++){
+            substring += this.at(index);
+        }
+
+        return substring;
+
+    }
+
+    string[] split(string delimiters) {
+
+        string[] splits;
+
+        string temporary = "";
+
+        for(uint index = 0; index < this.length; index++){
+
+            if(delimiters.contains(this.at(index))){
+                splits.add(temporary);
+                temporary = "";
+            } else {
+                temporary += this.at(index);
+            }
+
+        }
+
+        splits.add(temporary);
+
+        return splits;
+
+    }
+
+}

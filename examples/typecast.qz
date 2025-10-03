@@ -1,4 +1,4 @@
-// typecast.qz
+## typecast.qz
 
 using std.io;
 
@@ -19,7 +19,7 @@ void main(){
      
     println("almostPie: %{almostPie}");
 
-    Point3D higherDimensionPoint = Point3D(.x = 3.0, .y = 4.0, .z = 5.0);
+    Point3D higherDimensionPoint = Point3D(3.0, 4.0, 5.0);
     
     Point2D flatDimensionPoint = Point2D(higherDimensionPoint);
 
@@ -30,7 +30,7 @@ void main(){
 ## casts a Point3D to a Point2D
 typecast Point2D(Point3D){
 
-    return Point2D(.x = Point3D.x, .y = Point3D.y);
+    return Point2D(Point3D.x, Point3D.y);
 
 }
 

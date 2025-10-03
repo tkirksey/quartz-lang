@@ -1,9 +1,0 @@
-Each statement in quartz should be one of the followin in format:
-
-1.  an import statement ->                          using std.io;
-2a. a varibale declaration ->                       int a;
-2b. a varibale declaration and initialization ->    int a = 10;
-3.  a function call ->                              foo();
-4.  a branch operator ->                            if (a != 10){ faz(); }
-5.  a function declaration ->                       void myFunc(int a, int b) { ... }
-6.  a comment ->                                    // comment -or- /* ... */

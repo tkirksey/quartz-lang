@@ -1,4 +1,4 @@
-// print.qz
+## print.qz
 
 using std.io;
 using std.math;

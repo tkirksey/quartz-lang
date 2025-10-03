@@ -1,0 +1,22 @@
+Goals:
+
+v0.1
+main function and be able to storing variables
+
+v0.2
+function calls
+
+v0.3
+linker
+
+v0.4
+structs
+
+v0.5
+arrays
+
+v0.6
+allocator
+
+v0.7
+expansion functions

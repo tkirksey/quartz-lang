@@ -1,0 +1,8 @@
+In quartz all arrays are made dynamic by default. 
+
+To make a static array in quartz you have to use this syntax
+
+int* staticArray = new int[<size_of_array];
+
+When using a static array you may encounter run time segfaults 
+if you do not check you indexes properly.

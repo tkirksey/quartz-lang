@@ -1,5 +1,0 @@
-## prints a string followed by a newline character to stdout
-void println(string str);
-
-## prints a string to stdout;
-void print(string str);
