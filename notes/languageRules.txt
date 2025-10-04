@@ -1,0 +1,206 @@
+Every block of code starts with either a keyword, a datatype, or an data-pointer. 
+data-pointers are identifiers, literals, or operators.
+
+Example breakdown:
+
+```
+using std.io;
+
+void main(string[] args){
+
+    if(args.length() > 1){
+        string name = args.at(1);
+        println("Hello " + name + "!");
+    } else {
+        println("Hello World!);
+    }
+
+    printTriangle(3);
+
+}
+
+void printTriangle(uint layers){
+
+    for(int i = 0; i < layers; i++){
+        for(int j = 0; j <= i; j++){
+            print("*");
+        }
+        println();
+    }
+
+}
+
+```
+
+Blocked out:
+
+{fileCode}(
+    [
+        {keyword-using}{identifier-library}(
+            [
+                {identifier-subpath}
+            ]
+        )
+    ],
+    [
+        {datatype}{identifier-function}{functionArguments}(
+            [
+                {datatype}{identifier-variable}
+            ]
+        ){functionCode}(
+            [
+                {keyword-if}{
+                    [
+                        {lessThanOperator}{
+                            [
+                                {integerLiteral}
+                            ],
+                            [
+                                {identifier-variable}{dotExpansion}{identifier-function}{arguments}{}
+                            ]
+                        }
+                    ]
+                }
+                {branchCode}(
+                    [
+                        {assignmentOperator}{
+                            [
+                                {datatype}{identifier-variable}
+                            ],
+                            [
+                                {identifier-variable}{dotExpansion}{identifier-function}{arguments}(
+                                    [
+                                        {integerLiteral}
+                                    ]
+                                )
+                            ]
+                        }
+                    ],
+                    [
+                        {identifier-function}{arguments}(
+                            [
+                                {additionOperator}{
+                                    [
+                                        {stringLiteral}
+                                    ],
+                                    [
+                                        {additionOperator}{
+                                            [
+                                                {identifier}
+                                            ],
+                                            [
+                                                {stringLiteral}
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        )
+                    ]
+                ){keyword-else}(
+                    [
+                        {identifier-function}{arguments}(
+                            [
+                                {stringLiteral}
+                            ]
+                        )
+                    ]
+                )
+            ],
+            [
+                {identifier-function}{arguments}(
+                    [
+                        {integerLiteral}
+                    ]
+                )
+            ]
+        )
+    ],
+    [
+        {datatype}{identifier-function}{functionArguments}(
+            [
+                {datatype}{identifier-variable}
+            ]
+        ){functionCode}(
+            [
+                {keyword-for}{
+                    [
+                        {assignmentOperator}{
+                            [
+                                {datatype}{identifier-variable}
+                            ],
+                            [
+                                {integerLiteral}
+                            ]
+                        }
+                    ],
+                    [
+                        {lessThanOperator}{
+                            [
+                                {identifier-variable}
+                            ],
+                            [
+                                {identifier-variable}
+                            ]
+                        }
+                    ],
+                    [
+                        {incrementOperator}{
+                            [
+                                {identifier-variable}
+                            ]
+                        }
+                    ]
+                }{branchCode}(
+                    [
+                        {keyword-for}{
+                            [
+                                {assignmentOperator}{
+                                    [
+                                        {datatype}{identifier-variable}
+                                    ],
+                                    [
+                                        {integerLiteral}
+                                    ]
+                                }
+                            ],
+                            [
+                                {greaterThanEqualOperator}{
+                                    [
+                                        {identifier-variable}
+                                    ],
+                                    [
+                                        {identifier-variable}
+                                    ]
+                                }
+                            ],
+                            [
+                                {incrementOperator}{
+                                    [
+                                        {identifier-variable}
+                                    ]
+                                }
+                            ]
+                        }{branchCode}(
+                            [
+                                {identifier-function}{arguments}{
+                                    [
+                                        {stringLiteral}
+                                    ]
+                                }
+                            ]
+                        )
+                    ],
+                    [
+                        {identifier-function}{arguments}()
+                    ]
+                )
+            ]
+        )
+    ] 
+)
+
+Notes:
+[] => block
+{} => a token or a group of 1+ blocks
+() => a group of 0+ blocks
