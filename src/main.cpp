@@ -7,11 +7,6 @@
 using std::vector;
 using std::string;
 
-int parseFlags(vector<string> args);
-void printHelp(string arg0);
-
-extern string outputFilepath;
-
 int main(int argc, char** argv){
 
     if(argc == 1){
@@ -32,8 +27,15 @@ int main(int argc, char** argv){
         case PRINT_HELP_EXIT:
             exit(EXIT_SUCCESS);
         case MISSING_OUTPUT_FILEPATH:
-            printf("[Error]: no filepath passed with '-o' flag\n");
+            printf("[Error] no filepath passed with '-o' flag\n");
             break;
     }
+
+    if(files.size() == 0){
+        printf("[Fatal Error] no file(s) passed in arguments");
+        exit(EXIT_FAILURE);
+    }
+
+    
 
 }

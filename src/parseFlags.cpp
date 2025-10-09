@@ -1,6 +1,27 @@
 #include "parseFlags.hpp"
 
 string outputFilepath = "a.out";
+vector<string> files;
+
+bool isQuartzFile(string str){
+
+    int strSize = str.size();
+
+    if(strSize < 4){
+        return false;
+    }
+
+    int start = strSize - 3;
+
+    string substr = str.substr(start);
+
+    if(substr.compare(".qz") != 0){
+        return false;
+    }
+
+    return true;
+
+}
 
 int parseFlags(vector<string> args){
 
@@ -19,6 +40,10 @@ int parseFlags(vector<string> args){
 
             outputFilepath = string(args.at(i));
             continue;
+        }
+
+        if(isQuartzFile(args.at(i))){
+            files.push_back(args.at(i));
         }
 
     }

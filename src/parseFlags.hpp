@@ -10,6 +10,9 @@
 using std::vector;
 using std::string;
 
+extern string outputFilepath;
+extern vector<string> files;
+
 int parseFlags(vector<string> args);
 void printHelp(string arg0);
 
