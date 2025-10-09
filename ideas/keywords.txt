@@ -1,4 +1,4 @@
-Datatypes:
+Datatype:
     bool
     char
     int

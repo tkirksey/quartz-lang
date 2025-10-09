@@ -1,8 +1,28 @@
-In quartz all arrays are made dynamic by default. 
+In quartz all arrays are made resizable by default. 
 
-To make a static array in quartz you have to use this syntax
+If you want a fixed size array, then use this syntax:
 
-int* staticArray = new int[<size_of_array];
+```
+int[] fixedArray;
+fixedArray.sizeLock(8);
+```
 
-When using a static array you may encounter run time segfaults 
-if you do not check you indexes properly.
+There is a shorthand syntax to tell the compiler
+to do this for you.
+
+```
+int[8] fixedArray;
+```
+
+If you want a raw data array, then use this syntax:
+
+```
+int* rawArray = new int[8];
+```
+
+with this syntax you can also set a default value
+using a constructor like so:
+
+```
+int* rawArray = new int(0)[8];
+```

@@ -17,7 +17,7 @@ void main(){
 
     int almostPie = int(3.1415);
      
-    println("almostPie: %{almostPie}");
+    println("almostPie: " + almostPie);
 
     Point3D higherDimensionPoint = Point3D(3.0, 4.0, 5.0);
     
@@ -37,6 +37,6 @@ typecast Point2D(Point3D){
 ## casts a Point2D to a string
 typecast string(Point2D){
 
-    return "Point2D: {x: %{Point2D.x}, y: %{Point2D.y}}";
+    return "Point2D: {x: " + Point2D.x + ", y: " + Point2D.y + "}";
 
 }

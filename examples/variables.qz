@@ -10,14 +10,17 @@ void main(){
     ## standard multi-variable syntax
     int integer_two = 2, integer_three = 3;
 
-    ## standard filled array syntax
-    int array_one[] = {0, 1, 1, 2, 3, 5, 8};
+    ## standard dynamic array with values syntax
+    int[] array_one = {0, 1, 1, 2, 3, 5, 8};
 
-    ## standard blank array syntax
-    int array_two[256];
+    ## standard dynamic array syntax
+    int[] array_two;
 
     ## standard pointer declaration
     int* pointer;
+
+    ## standard fixed array with <n> items syntax
+    int* fixed_array = new int[<n>];
 
     ## standard type-casting syntax
     int from_float = int(9.9);
