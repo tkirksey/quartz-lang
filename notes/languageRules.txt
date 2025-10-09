@@ -51,7 +51,7 @@ Blocked out:
             [
                 {keyword-if}{
                     [
-                        {lessThanOperator}{
+                        {lessThanOperator}j{
                             [
                                 {integerLiteral}
                             ],
