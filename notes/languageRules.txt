@@ -34,29 +34,29 @@ void printTriangle(uint layers){
 
 Blocked out:
 
-{fileCode}(
+<scopeStart>(
     [
-        {keyword-using}{identifier-library}(
+        <keyword-using><identifier-library>(
             [
-                {identifier-subpath}
+                <identifier-subpath>
             ]
         )
     ],
     [
-        {datatype}{identifier-function}{functionArguments}(
+        <datatype-void><identifier-function><arguments-function>(
             [
-                {datatype}{identifier-variable}
+                <datatype-array-string><identifier-variable>
             ]
-        ){functionCode}(
+        )<scopeStart>(
             [
-                {keyword-if}{
+                <keyword-if>{
                     [
-                        {lessThanOperator}j{
+                        {lessThanOperator}{
                             [
                                 {integerLiteral}
                             ],
                             [
-                                {identifier-variable}{dotExpansion}{identifier-function}{arguments}{}
+                                <identifier-variable>{dotExpansion}<identifier-function>{arguments}{}
                             ]
                         }
                     ]
@@ -65,10 +65,10 @@ Blocked out:
                     [
                         {assignmentOperator}{
                             [
-                                {datatype}{identifier-variable}
+                                <datatype><identifier-variable>
                             ],
                             [
-                                {identifier-variable}{dotExpansion}{identifier-function}{arguments}(
+                                <identifier-variable>{dotExpansion}<identifier-function>{arguments}(
                                     [
                                         {integerLiteral}
                                     ]
@@ -77,7 +77,7 @@ Blocked out:
                         }
                     ],
                     [
-                        {identifier-function}{arguments}(
+                        <identifier-function>{arguments}(
                             [
                                 {additionOperator}{
                                     [
@@ -99,7 +99,7 @@ Blocked out:
                     ]
                 ){keyword-else}(
                     [
-                        {identifier-function}{arguments}(
+                        <identifier-function>{arguments}(
                             [
                                 {stringLiteral}
                             ]
@@ -108,7 +108,7 @@ Blocked out:
                 )
             ],
             [
-                {identifier-function}{arguments}(
+                <identifier-function>{arguments}(
                     [
                         {integerLiteral}
                     ]
@@ -117,9 +117,9 @@ Blocked out:
         )
     ],
     [
-        {datatype}{identifier-function}{functionArguments}(
+        <datatype-void><identifier-function><arguments-function>(
             [
-                {datatype}{identifier-variable}
+                <datatype><identifier-variable>
             ]
         ){functionCode}(
             [
@@ -127,7 +127,7 @@ Blocked out:
                     [
                         {assignmentOperator}{
                             [
-                                {datatype}{identifier-variable}
+                                <datatype><identifier-variable>
                             ],
                             [
                                 {integerLiteral}
@@ -137,17 +137,17 @@ Blocked out:
                     [
                         {lessThanOperator}{
                             [
-                                {identifier-variable}
+                                <identifier-variable>
                             ],
                             [
-                                {identifier-variable}
+                                <identifier-variable>
                             ]
                         }
                     ],
                     [
                         {incrementOperator}{
                             [
-                                {identifier-variable}
+                                <identifier-variable>
                             ]
                         }
                     ]
@@ -157,7 +157,7 @@ Blocked out:
                             [
                                 {assignmentOperator}{
                                     [
-                                        {datatype}{identifier-variable}
+                                        <datatype><identifier-variable>
                                     ],
                                     [
                                         {integerLiteral}
@@ -167,23 +167,23 @@ Blocked out:
                             [
                                 {greaterThanEqualOperator}{
                                     [
-                                        {identifier-variable}
+                                        <identifier-variable>
                                     ],
                                     [
-                                        {identifier-variable}
+                                        <identifier-variable>
                                     ]
                                 }
                             ],
                             [
                                 {incrementOperator}{
                                     [
-                                        {identifier-variable}
+                                        <identifier-variable>
                                     ]
                                 }
                             ]
                         }{branchCode}(
                             [
-                                {identifier-function}{arguments}{
+                                <identifier-function>{arguments}{
                                     [
                                         {stringLiteral}
                                     ]
@@ -192,7 +192,7 @@ Blocked out:
                         )
                     ],
                     [
-                        {identifier-function}{arguments}()
+                        <identifier-function>{arguments}()
                     ]
                 )
             ]
@@ -201,6 +201,7 @@ Blocked out:
 )
 
 Notes:
-[] => block
-{} => a token or a group of 1+ blocks
+[] => a block
+<> => a tag
+{} => a group of 1+ blocks
 () => a group of 0+ blocks
