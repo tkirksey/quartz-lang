@@ -17,12 +17,12 @@ void main(){
 
     println("You pumped a total of " + gallons + " gallons of gas.");
 
-    println("Your total came out to $" + string((gasPrice * gallons), 2) + ".");
+    println("Your total came out to $" + toString((gasPrice * gallons), 2) + ".");
 
 }
 
-## casts a double to a sting with a specific amount of decimal places
-typecast string(double dbl, uint places){
+## turns a double to a string with a specific amount of decimal places
+string toString(double dbl, uint places){
 
     int temp = int(dbl * power(10, places));
 

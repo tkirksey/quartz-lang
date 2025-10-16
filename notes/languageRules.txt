@@ -1,207 +1,21 @@
-Every block of code starts with either a keyword, a datatype, or an data-pointer. 
-data-pointers are identifiers, literals, or operators.
+<code> ::= (<variable-declaration> | <variable-initialization> ) <whitespace> 
 
-Example breakdown:
+<global_code> ::= (<library-import> | <struct-define> | <typecast-function> ) <whitespace> <global_code> | <end-of-file>
 
-```
-using std.io;
+<library-import> ::= "using" <library-path> ";" 
 
-void main(string[] args){
+<struct-define> ::= "struct" <identifier> <whitespace> "{" {<datatype> <identifier> ";" <whitespace> } "}" 
 
-    if(args.length() > 1){
-        string name = args.at(1);
-        println("Hello " + name + "!");
-    } else {
-        println("Hello World!);
-    }
+<typecast-function> ::= "typecast " <datatype> "(" <datatype> ")" <whitespace> "{" <code> "}"
 
-    printTriangle(3);
+<datatype> ::= <type>["*" | "[]" ]
 
-}
+<type> ::= <float> | <integer> | "bool" | <struct>
 
-void printTriangle(uint layers){
+<float> ::= "double"
 
-    for(int i = 0; i < layers; i++){
-        for(int j = 0; j <= i; j++){
-            print("*");
-        }
-        println();
-    }
+<integer> ::= "int" | "uint" | "char"
 
-}
+<struct> ::= "string"
 
-```
-
-Blocked out:
-
-<scopeStart>(
-    [
-        <keyword-using><identifier-library>(
-            [
-                <identifier-subpath>
-            ]
-        )
-    ],
-    [
-        <datatype-void><identifier-function><arguments-function>(
-            [
-                <datatype-array-string><identifier-variable>
-            ]
-        )<scopeStart>(
-            [
-                <keyword-if>{
-                    [
-                        {lessThanOperator}{
-                            [
-                                {integerLiteral}
-                            ],
-                            [
-                                <identifier-variable>{dotExpansion}<identifier-function>{arguments}{}
-                            ]
-                        }
-                    ]
-                }
-                {branchCode}(
-                    [
-                        {assignmentOperator}{
-                            [
-                                <datatype><identifier-variable>
-                            ],
-                            [
-                                <identifier-variable>{dotExpansion}<identifier-function>{arguments}(
-                                    [
-                                        {integerLiteral}
-                                    ]
-                                )
-                            ]
-                        }
-                    ],
-                    [
-                        <identifier-function>{arguments}(
-                            [
-                                {additionOperator}{
-                                    [
-                                        {stringLiteral}
-                                    ],
-                                    [
-                                        {additionOperator}{
-                                            [
-                                                {identifier}
-                                            ],
-                                            [
-                                                {stringLiteral}
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        )
-                    ]
-                ){keyword-else}(
-                    [
-                        <identifier-function>{arguments}(
-                            [
-                                {stringLiteral}
-                            ]
-                        )
-                    ]
-                )
-            ],
-            [
-                <identifier-function>{arguments}(
-                    [
-                        {integerLiteral}
-                    ]
-                )
-            ]
-        )
-    ],
-    [
-        <datatype-void><identifier-function><arguments-function>(
-            [
-                <datatype><identifier-variable>
-            ]
-        ){functionCode}(
-            [
-                {keyword-for}{
-                    [
-                        {assignmentOperator}{
-                            [
-                                <datatype><identifier-variable>
-                            ],
-                            [
-                                {integerLiteral}
-                            ]
-                        }
-                    ],
-                    [
-                        {lessThanOperator}{
-                            [
-                                <identifier-variable>
-                            ],
-                            [
-                                <identifier-variable>
-                            ]
-                        }
-                    ],
-                    [
-                        {incrementOperator}{
-                            [
-                                <identifier-variable>
-                            ]
-                        }
-                    ]
-                }{branchCode}(
-                    [
-                        {keyword-for}{
-                            [
-                                {assignmentOperator}{
-                                    [
-                                        <datatype><identifier-variable>
-                                    ],
-                                    [
-                                        {integerLiteral}
-                                    ]
-                                }
-                            ],
-                            [
-                                {greaterThanEqualOperator}{
-                                    [
-                                        <identifier-variable>
-                                    ],
-                                    [
-                                        <identifier-variable>
-                                    ]
-                                }
-                            ],
-                            [
-                                {incrementOperator}{
-                                    [
-                                        <identifier-variable>
-                                    ]
-                                }
-                            ]
-                        }{branchCode}(
-                            [
-                                <identifier-function>{arguments}{
-                                    [
-                                        {stringLiteral}
-                                    ]
-                                }
-                            ]
-                        )
-                    ],
-                    [
-                        <identifier-function>{arguments}()
-                    ]
-                )
-            ]
-        )
-    ] 
-)
-
-Notes:
-[] => a block
-<> => a tag
-{} => a group of 1+ blocks
-() => a group of 0+ blocks
+<whitespace> ::= { " " | "\n" | "\t" | "\r\n" }
