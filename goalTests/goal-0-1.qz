@@ -1,4 +1,4 @@
-void main(string[] args){
+void main(){
 
     int a = 10;
 
