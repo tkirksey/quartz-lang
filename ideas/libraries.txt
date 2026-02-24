@@ -1,6 +1,0 @@
-On linux, the standard library will be installed in /lib/quartz and any additional libraries will be installed
-in /usr/lib/quartz. 
-
-If you want a library installed just for a project, then as long as the path that the 
-compiler is running in detects a /lib/quartz folder with the desired libraries, it will use it. You can also
-use the "-l" flag to point it to a directory with the libraries you want to use.

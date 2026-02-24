@@ -1,9 +1,0 @@
-## helloworld.qz
-
-using std.io;
-
-void main(){
-
-    println("Hello World!");
-
-}
