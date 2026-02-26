@@ -1,0 +1,21 @@
+using std.print;
+
+void main(){
+    // this is a comment
+    /* this is also a comment */
+    /*
+    *   These comments can also span 
+    *   multiple lines.
+    */
+    println("Comments are cool!");
+}
+
+// This is a documentation comment
+
+/**
+*   This function prints a message with the int value followed by a new line.
+*   @param bar the int to print
+*/
+void foo(int bar){
+    std.println("Bar is " + bar);
+}
