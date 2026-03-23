@@ -1,0 +1,33 @@
+# goal 
+find a way to have a class/struct like object that by default has private fields, but public methods.
+
+# notes
+what if we make all fields read-only by default and can be hidden with a qualifier(?) allowing the class/struct to act public but still
+have some semblance of abstraction.
+
+# code
+`
+using std.print;
+
+public class Student {
+
+    uint id;
+    String name;
+    hidden String[] secrets; // should be hidden from "lsp"s and should throw a compile error.
+
+    Student(uint id, String name){
+        this.id = id;
+        this.name = name;
+        this.secrets = new String[4];
+    }
+
+}
+
+void main(){
+
+    Student student = new Student(1, "John");
+
+    printfln("Student $0 is $1", {student.id, student.name});
+
+}
+`
