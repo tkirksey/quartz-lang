@@ -1,33 +1,36 @@
-# goal 
-find a way to have a class/struct like object that by default has private fields, but public methods.
+Quartz classes act a bit different than traditional classes.
 
-# notes
-what if we make all fields read-only by default and can be hidden with a qualifier(?) allowing the class/struct to act public but still
-have some semblance of abstraction.
+In Quartz all fields are public read accessable, reducing the need to implement
+a ton of get functions that most the time just return the variable anyways.
 
-# code
-`
-using std.print;
+If you want fields to be hidden, you mark the varibale with the qualifier
+'private'
 
-public class Student {
+In contrast functions are private by default. To make the public, just mark them
+with the 'public' qualifier.
+
+```
+public class Example {
 
     uint id;
     String name;
-    hidden String[] secrets; // should be hidden from "lsp"s and should throw a compile error.
+    String message;
 
-    Student(uint id, String name){
-        this.id = id;
+    private static uint next_id = 0;
+
+    public Example(String name, String message){
         this.name = name;
-        this.secrets = new String[4];
+        this.message = message;
+        next_id += 1;
+        this.id = next_id;
+    }
+
+    public String toString() {
+        return String.format(
+            "Example:{id: %0, name: %1, message: %2}",
+            [this.id, this.name, this.message]
+        );
     }
 
 }
-
-void main(){
-
-    Student student = new Student(1, "John");
-
-    printfln("Student $0 is $1", {student.id, student.name});
-
-}
-`
+```
