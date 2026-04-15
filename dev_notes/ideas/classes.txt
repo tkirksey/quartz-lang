@@ -1,36 +1,56 @@
-Quartz classes act a bit different than traditional classes.
+What do I want out of classes in quartz?:
 
-In Quartz all fields are public read accessable, reducing the need to implement
-a ton of get functions that most the time just return the variable anyways.
+I want to be able to have an object like structure that can
+- have named fields that are readable, but non-writable by default
+- be able to implement interfaces to allow polymorphism
+- have functions be public by default
 
-If you want fields to be hidden, you mark the varibale with the qualifier
-'private'
+Example:
 
-In contrast functions are private by default. To make the public, just mark them
-with the 'public' qualifier.
+using std.Math;
+using std.String;
+using std.printfln;
 
-```
-public class Example {
+public interface Stringable {
+    String toString();
+}
 
-    uint id;
-    String name;
-    String message;
+public class Point2D : Stringable {
 
-    private static uint next_id = 0;
+    Double x;
+    Double y;
 
-    public Example(String name, String message){
-        this.name = name;
-        this.message = message;
-        next_id += 1;
-        this.id = next_id;
+    Point2D(Double x, Double y){
+        this.x = x;
+        this.y = y;
     }
 
-    public String toString() {
-        return String.format(
-            "Example:{id: %0, name: %1, message: %2}",
-            [this.id, this.name, this.message]
-        );
+    Point2D(){
+        this.x = 0;
+        this.y = 0;
+    }
+
+    String toString(){
+        return String.format("Point2D:{x: $1, y: $2}", [this.x, this.y]);
     }
 
 }
-```
+
+Double distance(Point2D a, Point2D b){
+    return Math.sqrt(Math.square(a.x - b.x) + Math.square(a.y - b.y));
+}
+
+void main(){
+
+    var pointA = new Point2D(1.0, 1.0);
+    var pointB = new Point2D(2.0, 2.0);
+
+    println("Point A is: " + pointA.toString());
+    println("Point B is: " + pointB.toString());
+
+    printfln(
+        "The distance between Point A and B is: $1",
+        [distance(pointA, pointB)]
+    );
+
+}
