@@ -1,56 +1,55 @@
 What do I want out of classes in quartz?:
 
-I want to be able to have an object like structure that can
-- have named fields that are readable, but non-writable by default
-- be able to implement interfaces to allow polymorphism
-- have functions be public by default
+I want them to be like java classes, but more public
+I'd also like writing getter/setters to be easier
+
+{r} -> lets values be read but not modified
+{w} -> lets values be modified but not read
+{r, w} || {w, r} -> lets values be read and written
 
 Example:
 
-using std.Math;
-using std.String;
-using std.printfln;
+class Student {
 
-public interface Stringable {
-    String toString();
-}
+    uint id {r}; 
+    string name {r, w};
 
-public class Point2D : Stringable {
+    static uint nextId = 1;
 
-    Double x;
-    Double y;
+    Student(string name){
 
-    Point2D(Double x, Double y){
-        this.x = x;
-        this.y = y;
-    }
+        this.id = nextId;
+        this.name = name;
 
-    Point2D(){
-        this.x = 0;
-        this.y = 0;
-    }
+        nextId += 1;
 
-    String toString(){
-        return String.format("Point2D:{x: $1, y: $2}", [this.x, this.y]);
     }
 
 }
 
-Double distance(Point2D a, Point2D b){
-    return Math.sqrt(Math.square(a.x - b.x) + Math.square(a.y - b.y));
-}
+Extra Idea:
 
-void main(){
+allow custom functions to be ran when r or w is triggered
 
-    var pointA = new Point2D(1.0, 1.0);
-    var pointB = new Point2D(2.0, 2.0);
+class EvensOnly : throws Exception {
 
-    println("Point A is: " + pointA.toString());
-    println("Point B is: " + pointB.toString());
+    uint number {
+        r(() => {
+            println("EvensOnly member has been read!!");
+        }), 
+        w(validateRule)
+    };
 
-    printfln(
-        "The distance between Point A and B is: $1",
-        [distance(pointA, pointB)]
-    );
+    EvensOnly(uint number) {
+        this.number = number;
+    }
+
+    void validateRule(uint number) {
+
+        if(number % 2 != 0){
+            throw new Exception("Not an even number! EWWWWWW!!!!");
+        }
+
+    }
 
 }

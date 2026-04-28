@@ -1,0 +1,29 @@
+Idea:
+
+state lockable variables
+
+Example:
+
+using std.print;
+
+void main() {
+
+    uint id = 0;
+    id += 1;                        // no problem
+    
+    const uint backupOfId = id;
+    backupOfId += 1;                // throws compiler error
+
+    uint[] values = [1, 2, 3, 4];
+
+    uint[] ptrToValues = values;            // points to values
+    const uint[] backupOfValues = values;   // doesn't point to values, instead makes a copy
+
+    values.push(5);         // all good!
+    backupOfValues.push(5)  // oh no (compiler error)
+
+    println(values);            // "[1, 2, 3, 4, 5]"
+    println(ptrToValues);       // "[1, 2, 3, 4, 5]"
+    println(backupOfValues);    // "[1, 2, 3, 4]"
+
+}
